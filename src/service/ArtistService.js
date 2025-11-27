@@ -9,7 +9,8 @@
  * @property {Date} birthdate
  */
 
-import { SupabaseClient } from "@supabase/supabase-js";
+import { SupabaseClientApi } from "../api/SupabaseAPI";
+
 
 /**
  * @callback callbackGetAllArtist
@@ -20,7 +21,7 @@ import { SupabaseClient } from "@supabase/supabase-js";
  * @param {callbackGetAllArtist} callback 
  */
 export function getAllArtist(callback) {
-  SupabaseClient
+  SupabaseClientApi
     .from("Artist")
     .select()
     .then((response) => {
@@ -33,4 +34,12 @@ export function getAllArtist(callback) {
         console.error(error);
         
     })
+}
+
+/**
+ * 
+ * @param {*} callback 
+ */
+export function addArtist(callback){
+
 }

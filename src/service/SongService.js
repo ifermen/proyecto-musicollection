@@ -1,5 +1,4 @@
-import { SupabaseClient } from "@supabase/supabase-js";
-import { getSupabaseClient } from "../api/SupabaseAPI";
+import { SupabaseClientApi } from "../api/SupabaseAPI";
 
 /**
  * @typedef {Object} Song
@@ -19,7 +18,7 @@ import { getSupabaseClient } from "../api/SupabaseAPI";
  * @param {callbackGetAllSongs} callback 
  */
 export function getAllSongs(callback) {
-  SupabaseClient
+  SupabaseClientApi
     .from("Song")
     .select()
     .then((response) => {
