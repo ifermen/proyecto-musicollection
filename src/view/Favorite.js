@@ -161,12 +161,12 @@ function renderSongAction(td, song) {
   btnFavorite.className = "btn";
   const imgFavorite = document.createElement("img");
   if (isSongFavorite(song.id)) {
-    imgFavorite.src = "src/asset/svg/star_filled.svg";
+    imgFavorite.src = "./src/asset/svg/star_filled.svg";
     btnFavorite.addEventListener("click", () => {
       unfavSong(btnFavorite, imgFavorite, song.id);
     });
   } else {
-    imgFavorite.src = "src/asset/svg/star.svg";
+    imgFavorite.src = "./src/asset/svg/star.svg";
     btnFavorite.addEventListener("click", () => {
       favSong(btnFavorite, imgFavorite, song.id);
     });
@@ -184,7 +184,7 @@ function renderSongAction(td, song) {
  * @param {number} id
  */
 function favSong(btn, img, id) {
-  img.src = "src/asset/svg/star_filled.svg";
+  img.src = "./src/asset/svg/star_filled.svg";
   addFavoriteSong(id);
   btn.removeEventListener("click", () => favSong(btn, img, id));
   btn.addEventListener("click", () => unfavSong(btn, img, id));
@@ -196,7 +196,7 @@ function favSong(btn, img, id) {
  * @param {number} id
  */
 function unfavSong(btn, img, id) {
-  img.src = "src/asset/svg/star.svg";
+  img.src = "./src/asset/svg/star.svg";
   removeFavoriteSong(id);
   btn.removeEventListener("click", () => unfavSong(btn, img, id));
   btn.addEventListener("click", () => favSong(btn, img, id));
@@ -360,12 +360,12 @@ function renderAction(td, artist) {
   btnFavorite.className = "btn";
   const imgFavorite = document.createElement("img");
   if (isArtistFavorite(artist.id)) {
-    imgFavorite.src = "src/asset/svg/star_filled.svg";
+    imgFavorite.src = "./src/asset/svg/star_filled.svg";
     btnFavorite.addEventListener("click", () => {
       unfavArtist(btnFavorite, imgFavorite, artist.id);
     });
   } else {
-    imgFavorite.src = "src/asset/svg/star.svg";
+    imgFavorite.src = "./src/asset/svg/star.svg";
     btnFavorite.addEventListener("click", () => {
       favArtist(btnFavorite, imgFavorite, artist.id);
     });
@@ -383,7 +383,7 @@ function renderAction(td, artist) {
  * @param {number} id
  */
 function favArtist(btn, img, id) {
-  img.src = "src/asset/svg/star_filled.svg";
+  img.src = "./src/asset/svg/star_filled.svg";
   addFavoriteArtist(id);
   btn.removeEventListener("click", () => favArtist(btn, img, id));
   btn.addEventListener("click", () => unfavArtist(btn, img, id));
@@ -395,7 +395,7 @@ function favArtist(btn, img, id) {
  * @param {number} id
  */
 function unfavArtist(btn, img, id) {
-  img.src = "src/asset/svg/star.svg";
+  img.src = "./src/asset/svg/star.svg";
   removeFavoriteArtist(id);
   btn.removeEventListener("click", () => unfavArtist(btn, img, id));
   btn.addEventListener("click", () => favArtist(btn, img, id));
