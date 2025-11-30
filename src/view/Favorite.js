@@ -162,11 +162,13 @@ function renderSongAction(td, song) {
   const imgFavorite = document.createElement("img");
   if (isSongFavorite(song.id)) {
     imgFavorite.src = "./src/asset/svg/star_filled.svg";
+    imgFavorite.alt = "Estrella llena";
     btnFavorite.addEventListener("click", () => {
       unfavSong(btnFavorite, imgFavorite, song.id);
     });
   } else {
     imgFavorite.src = "./src/asset/svg/star.svg";
+    imgFavorite.alt = "Estrella vacia";
     btnFavorite.addEventListener("click", () => {
       favSong(btnFavorite, imgFavorite, song.id);
     });
@@ -185,6 +187,7 @@ function renderSongAction(td, song) {
  */
 function favSong(btn, img, id) {
   img.src = "./src/asset/svg/star_filled.svg";
+  img.alt = "Estrella llena";
   addFavoriteSong(id);
   btn.removeEventListener("click", () => favSong(btn, img, id));
   btn.addEventListener("click", () => unfavSong(btn, img, id));
@@ -197,6 +200,7 @@ function favSong(btn, img, id) {
  */
 function unfavSong(btn, img, id) {
   img.src = "./src/asset/svg/star.svg";
+  img.alt = "Estrella vacia";
   removeFavoriteSong(id);
   btn.removeEventListener("click", () => unfavSong(btn, img, id));
   btn.addEventListener("click", () => favSong(btn, img, id));
@@ -361,11 +365,13 @@ function renderAction(td, artist) {
   const imgFavorite = document.createElement("img");
   if (isArtistFavorite(artist.id)) {
     imgFavorite.src = "./src/asset/svg/star_filled.svg";
+    imgFavorite.alt = "Estrella llena";
     btnFavorite.addEventListener("click", () => {
       unfavArtist(btnFavorite, imgFavorite, artist.id);
     });
   } else {
     imgFavorite.src = "./src/asset/svg/star.svg";
+    imgFavorite.alt = "Estrella vacía";
     btnFavorite.addEventListener("click", () => {
       favArtist(btnFavorite, imgFavorite, artist.id);
     });
@@ -384,6 +390,7 @@ function renderAction(td, artist) {
  */
 function favArtist(btn, img, id) {
   img.src = "./src/asset/svg/star_filled.svg";
+  img.alt = "Estrella llena";
   addFavoriteArtist(id);
   btn.removeEventListener("click", () => favArtist(btn, img, id));
   btn.addEventListener("click", () => unfavArtist(btn, img, id));
@@ -396,6 +403,7 @@ function favArtist(btn, img, id) {
  */
 function unfavArtist(btn, img, id) {
   img.src = "./src/asset/svg/star.svg";
+  img.alt = "Estrella vacía";
   removeFavoriteArtist(id);
   btn.removeEventListener("click", () => unfavArtist(btn, img, id));
   btn.addEventListener("click", () => favArtist(btn, img, id));

@@ -3,7 +3,11 @@
  */
 
 import { getArtistById } from "../service/ArtistService";
-import { addFavoriteSong, isSongFavorite, removeFavoriteSong } from "../service/FavoriteLocalStorageService";
+import {
+  addFavoriteSong,
+  isSongFavorite,
+  removeFavoriteSong,
+} from "../service/FavoriteLocalStorageService";
 import { getAllSongs } from "../service/SongService";
 
 /**
@@ -113,9 +117,9 @@ function addNewRow(song, tbody) {
   tr.appendChild(tdGenre);
 
   const tdArtist = document.createElement("td");
-  getArtistById(song.idArtist,(artist) => {
+  getArtistById(song.idArtist, (artist) => {
     tdArtist.textContent = artist.name;
-  })
+  });
   tr.appendChild(tdArtist);
 
   const tdYear = document.createElement("td");
@@ -123,7 +127,7 @@ function addNewRow(song, tbody) {
   tr.appendChild(tdYear);
 
   const tdAction = document.createElement("td");
-  renderAction(tdAction,song);
+  renderAction(tdAction, song);
   tr.appendChild(tdAction);
 
   tbody.appendChild(tr);
@@ -179,13 +183,15 @@ function renderAction(td, song) {
   const imgFavorite = document.createElement("img");
   if (isSongFavorite(song.id)) {
     imgFavorite.src = "./src/asset/svg/star_filled.svg";
+    imgFavorite.alt = "Estrella llena";
     btnFavorite.addEventListener("click", () => {
-      unfavSong(btnFavorite,imgFavorite,song.id);
+      unfavSong(btnFavorite, imgFavorite, song.id);
     });
   } else {
     imgFavorite.src = "./src/asset/svg/star.svg";
+    imgFavorite.alt = "Estrella vacía";
     btnFavorite.addEventListener("click", () => {
-      favSong(btnFavorite,imgFavorite,song.id);
+      favSong(btnFavorite, imgFavorite, song.id);
     });
   }
   imgFavorite.width = 20;
@@ -200,11 +206,12 @@ function renderAction(td, song) {
  * @param {HTMLButtonElement} btn
  * @param {number} id
  */
-function favSong(btn,img, id) {
+function favSong(btn, img, id) {
   img.src = "./src/asset/svg/star_filled.svg";
+  img.alt = "Estrella llena";
   addFavoriteSong(id);
-  btn.removeEventListener("click",() => favSong(btn,img,id));
-  btn.addEventListener("click", () => unfavSong(btn,img,id));
+  btn.removeEventListener("click", () => favSong(btn, img, id));
+  btn.addEventListener("click", () => unfavSong(btn, img, id));
 }
 
 /**
@@ -212,9 +219,10 @@ function favSong(btn,img, id) {
  * @param {HTMLButtonElement} btn
  * @param {number} id
  */
-function unfavSong(btn,img, id) {
+function unfavSong(btn, img, id) {
   img.src = "./src/asset/svg/star.svg";
+  img.alt = "Estrella vacía";
   removeFavoriteSong(id);
-  btn.removeEventListener("click",() => unfavSong(btn,img,id));
-  btn.addEventListener("click", () => favSong(btn,img,id));
+  btn.removeEventListener("click", () => unfavSong(btn, img, id));
+  btn.addEventListener("click", () => favSong(btn, img, id));
 }

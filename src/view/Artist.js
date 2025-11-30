@@ -180,13 +180,15 @@ function renderAction(td, artist) {
   const imgFavorite = document.createElement("img");
   if (isArtistFavorite(artist.id)) {
     imgFavorite.src = "./src/asset/svg/star_filled.svg";
+    imgFavorite.alt = "Estrella llena";
     btnFavorite.addEventListener("click", () => {
-      unfavArtist(btnFavorite,imgFavorite,artist.id);
+      unfavArtist(btnFavorite, imgFavorite, artist.id);
     });
   } else {
     imgFavorite.src = "./src/asset/svg/star.svg";
+    imgFavorite.alt = "Estrella vacía";
     btnFavorite.addEventListener("click", () => {
-      favArtist(btnFavorite,imgFavorite,artist.id);
+      favArtist(btnFavorite, imgFavorite, artist.id);
     });
   }
   imgFavorite.width = 20;
@@ -201,11 +203,12 @@ function renderAction(td, artist) {
  * @param {HTMLButtonElement} btn
  * @param {number} id
  */
-function favArtist(btn,img, id) {
+function favArtist(btn, img, id) {
   img.src = "./src/asset/svg/star_filled.svg";
+  img.alt = "Estrella llena";
   addFavoriteArtist(id);
-  btn.removeEventListener("click",() => favArtist(btn,img,id));
-  btn.addEventListener("click", () => unfavArtist(btn,img,id));
+  btn.removeEventListener("click", () => favArtist(btn, img, id));
+  btn.addEventListener("click", () => unfavArtist(btn, img, id));
 }
 
 /**
@@ -213,11 +216,10 @@ function favArtist(btn,img, id) {
  * @param {HTMLButtonElement} btn
  * @param {number} id
  */
-function unfavArtist(btn,img, id) {
+function unfavArtist(btn, img, id) {
   img.src = "./src/asset/svg/star.svg";
+  img.alt = "Estrella vacía";
   removeFavoriteArtist(id);
-  btn.removeEventListener("click",() => unfavArtist(btn,img,id));
-  btn.addEventListener("click", () => favArtist(btn,img,id));
+  btn.removeEventListener("click", () => unfavArtist(btn, img, id));
+  btn.addEventListener("click", () => favArtist(btn, img, id));
 }
-
-
